@@ -1,0 +1,28 @@
+[
+    {
+        "Name": "הסנדק",
+        "Catagory": "דרמה",
+        "Poster": "https://image.posterlounge.com/images/big/1878326.jpg",
+        "Imdb": "https://www.imdb.com/title/tt0068646",
+        "DateAddad": "2020-07-05T00:00:00"
+    },
+    {
+        "Name": "טיטניק",
+        "Catagory": "דרמה",
+        "Poster": "https://i.pinimg.com/originals/4c/72/d3/4c72d3b08ecd9329339122c63d626434.jpg",
+        "Imdb": "https://www.imdb.com/title/tt0120338/",
+        "DateAddad": "2020-07-05T10:00:00"
+    },
+    {
+        "Name": "רשימת שינדלר",
+        "Catagory": "מלחמה",
+        "Poster": "https://images-na.ssl-images-amazon.com/images/I/71ZL9pIsLtL._AC_SY879_.jpg",
+        "Imdb": "https://www.imdb.com/title/tt0108052"
+    },
+    {
+        "Name": "קזבלנקה",
+        "Catagory": "מלחמה",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_.jpg",
+        "Imdb": "https://www.imdb.com/title/tt0034583/"
+    }
+]

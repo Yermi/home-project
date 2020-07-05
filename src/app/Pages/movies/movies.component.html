@@ -1,0 +1,86 @@
+<div class="container-fluid" style="margin-top: 10px">
+    <div class="row" dir="rtl">
+        <div class="col-sm-3 col-md-3">
+            <div style="text-align: center; margin-right: px;">
+                {{loginService.GetUser}} שלום
+            </div>
+            <div style="text-align: center; margin-top: 15px; margin-bottom: 10px;">
+                <button type="button" style="width: 80%;" class="btn btn-info" (click)="OpenAddMovieModal()">הוספת
+                    סרט</button>
+            </div>
+            <div *ngFor="let c of moviesService.Catagories; let i = index" style="text-align: center; cursor: pointer;"
+                (click)="FetchByCatagory(i)">
+                <p>{{c}}</p>
+            </div>
+            <div style="text-align: center;margin-top: 8px;">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-sign-out" aria-hidden="true" (click)="loginService.Logout()"
+                        style="cursor: pointer;" title="התנתק"></i> התנתק
+                </button>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-9 container-fluid">
+            <div *ngIf="!moviesService.Movies || moviesService.Movies.length == 0" style="text-align: center;margin-top: 5%; width: 80%;"
+                class="alert alert-info" role="alert">
+                לחץ על קטגוריה כדי לצפות בסרטים במאגר
+            </div>
+            <div class="row">
+                <div class="card border-primary" *ngFor="let movie of moviesService.Movies; let i = index"
+                    class="col-sm-4">
+                    <div class="row card-style">
+                        <div class="col-5">
+                            <img [src]="movie.Poster" style="border: black solid 2px;" width="90" height="150" alt="">
+                        </div>
+                        <div class="col-5" style="text-align: right;">
+                            <a [href]="movie.Imdb" style="font-size: 16px;" target="_blank">{{movie.Name}}</a>
+                            <p>{{movie.Catagory}}</p>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-window-close" aria-hidden="true" style="cursor: pointer;"
+                                (click)="Remove(i)"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+<ngx-smart-modal #AddMovieModal identifier="AddMovieModal" (onClose)="errors = null" dir="rtl">
+    <h1 style="text-align: center;">הוספת סרט</h1>
+    <div *ngIf="movie">
+        <form novalidate dir="rtl" style="text-align: right;">
+            <div class="form-group">
+                <label>שם:</label>
+                <input class="form-control" [(ngModel)]="movie.Name" name="name" type="text">
+            </div>
+
+            <div class="form-group">
+                <label>קטגוריה:</label>
+                <select class="form-control" [(ngModel)]="movie.Catagory" name="catagory">
+                    <option *ngFor="let c of catagories" [value]="c">{{c}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>IMDB:</label>
+                <input class="form-control" [(ngModel)]="movie.Imdb" name="imdb" type="text">
+            </div>
+
+            <div class="form-group">
+                <label>תמונה</label>
+                <input class="form-control" [(ngModel)]="movie.Poster" name="poster" type="text">
+            </div>
+            <button class="btn btn-success" type="submit" (click)="AddMovie()">
+                הוסף
+            </button>
+
+            <div style="margin-top: 15px;" class="alert alert-danger" role="alert" *ngIf="errors">
+                {{errors}}
+            </div>
+        </form>
+    </div>
+
+    <!-- <button (click)="AddMovieModal.close()">Close</button> -->
+</ngx-smart-modal>
